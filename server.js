@@ -23,4 +23,8 @@ app.get("/hiro", (req, res) => {
   res.render("hiro");
 })
 
+app.get("/microbots", (req, res) => {
+  res.render("microbots");
+})
+
 app.listen(PORT, console.log(`Server is running on port ${PORT}`));

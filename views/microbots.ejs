@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Microbots</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&display=swap");
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        font-family: "Geist Mono", monospace;
+        color: white;
+        overflow: hidden;
+        background: linear-gradient(#060606, #131313);
+        display: flex;
+        flex-direction: column;
+      }
+      .navbar {
+        margin: 1vw 0 0 1vw;
+        display: flex;
+        align-items: center;
+        position: relative;
+        z-index: 15;
+      }
+      .nav {
+        border: 1px solid #6c6c6c;
+        border-radius: 100vw;
+        padding: 0.5vw 1vw;
+        text-decoration: none;
+        color: white;
+        font-size: 1vw;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.22) 0%,
+          rgba(76, 76, 76, 0.22) 100%
+        );
+        backdrop-filter: blur(5.45px);
+        transition: 0.2s;
+      }
+      .nav:hover {
+        border: 1px solid red;
+      }
+      .line {
+        height: 0.1vw;
+        width: 1.5vw;
+        background: #6c6c6c;
+      }
+      .main {
+        display: flex;
+        flex: 1;
+      }
+      .left {
+        margin: 1.5vw 0 0vw 2vw;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5vw;
+      }
+      .shapes-text {
+        width: 20vw;
+      }
+      .left-inner {
+        width: 18vw;
+        display: flex;
+        flex-direction: column;
+        gap: 2vw;
+        margin-top: 1vw;
+        flex: 1;
+      }
+      .circle {
+        width: 7.5vw;
+        height: 7.5vw;
+        border: 1px solid red;
+        border-radius: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .icon {
+        height: 3.25vw;
+        width: auto;
+      }
+
+      .middle {
+        flex: 1;
+        margin: 1.5vw 2vw 1.5vw 0vw;
+        border-radius: 2vw;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <a class="nav" href="#" style="border: 1px solid red">/DASHBOARD</a>
+      <div class="line"></div>
+      <a class="nav" href="#">/MICROBOTS</a>
+      <div class="line"></div>
+      <a class="nav" href="#">/CREATURES</a>
+      <div class="line"></div>
+      <a class="nav" href="#">/JOURNAL</a>
+    </div>
+    <div class="main">
+      <div class="left">
+        <img src="./elements/shapes-text.png" class="shapes-text" />
+        <div class="left-inner">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            "
+          >
+            <div class="circle">
+              <img src="./icons/cube.png" class="icon" />
+            </div>
+            <div class="circle">
+              <img src="./icons/circle.png" class="icon" />
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            "
+          >
+            <div class="circle">
+              <img src="./icons/pyramid.png" class="icon" />
+            </div>
+            <div class="circle">
+              <img src="./icons/cylinder.png" class="icon" />
+            </div>
+          </div>
+          <div style="border: 1px solid red; flex: 1; border-radius: 2vw">
+            <p
+              style="
+                text-align: center;
+                font-size: 1.1vw;
+                margin: 0px;
+                margin-top: 1.2vw;
+              "
+            >
+              DRAW CUSTOM SHAPE
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="middle">
+        <p style="margin: 0px; margin-bottom: 0.5vw; text-align: center; font-size: 1.1vw;">control</p>
+        <p style="margin: 0px; margin-bottom: 0.5vw; text-align: center; font-size: 1.1vw;">[MICROBOTS]</p>
+      </div>
+    </div>
+  </body>
+</html>
