@@ -1,0 +1,59 @@
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&display=swap");
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    display: flex;
+    margin: 0px;
+    font-family: "Geist Mono", monospace;
+    background: #000a11;
+    height: 100vh;
+    padding: 2vw;
+    color: white;
+  }
+  .navbar {
+    display: flex;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 48.8%, 94.14% 100%, 0 100%);
+    border-bottom: 0.1vw solid #a1c7e7;
+  }
+  .nav-big {
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 75% 100%, 0% 100%);
+    background-color: #a1c7e7;
+    font-size: 1vw;
+  }
+  .nav-smol {
+    clip-path: polygon(0 0, 98.8% 0, 98.8% 48.5%, 73.4% 100%, 0% 100%);
+    background-color: #000a11;
+    /* padding: 1vh 3vh 1vh 1vh; */
+    padding: 0.5vw 2vw 0.5vw 0.5vw;
+    margin-left: -0.04vw;
+    cursor: pointer;
+    transition: 0.2s;
+    display: block;
+    text-decoration: none;
+    color: white;
+  }
+  .nav-smol:not(.active):hover {
+    color: #a1c7e7;
+  }
+  .active {
+    background-color: #a1c7e7;
+    color: #000a11;
+  }
+</style>
+<div class="navbar">
+  <div class="nav-big">
+    <a class="nav-smol <%= active == 1 ? 'active' : '' %>" href="#">/DASHBOARD</a>
+  </div>
+  <div class="nav-big">
+    <a class="nav-smol <%= active == 2 ? 'active' : '' %>" href="#">/MICROBOTS</a>
+  </div>
+  <div class="nav-big">
+    <a class="nav-smol <%= active == 3 ? 'active' : '' %>" href="#">/CREATURES</a>
+  </div>
+  <div class="nav-big">
+    <a class="nav-smol <%= active == 4 ? 'active' : '' %>" href="#">/JOURNAL</a>
+  </div>
+</div>
