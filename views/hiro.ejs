@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hiro</title>
+    <style>
+      .dabba {
+        flex: 1;
+        border: 0.1vw solid #a1c7e7;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+      }
+      .circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -53%);
+        height: 70vh;
+      }
+      .hiro-text {
+        width: 15vw;
+        margin-top: 2.5vw;
+        margin-left: 2vw;
+      }
+      .hiro-img {
+        height: 69vh;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -35%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dabba">
+      <%- include('./partials/navbar.ejs', {active: 1}) %>
+      <img src="./elements/circle.png" class="circle">
+      <img src="./elements/hiro-text.png" class="hiro-text">
+      <img src="./elements/hiro-img.png" class="hiro-img">
+    </div>
+  </body>
+</html>

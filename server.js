@@ -12,11 +12,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.render("index")
+  res.render("index");
 });
 
 app.get("/baymax", (req, res) => {
-  res.render("baymax")
+  res.render("baymax");
+});
+
+app.get("/hiro", (req, res) => {
+  res.render("hiro");
 })
 
 app.listen(PORT, console.log(`Server is running on port ${PORT}`));
