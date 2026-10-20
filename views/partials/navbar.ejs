@@ -15,7 +15,7 @@
   .navbar {
     display: flex;
     position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% 48.8%, 94.14% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 73% 100%, 0% 100%);
     border-bottom: 0.1vw solid #a1c7e7;
   }
   .nav-big {
@@ -27,7 +27,7 @@
     clip-path: polygon(0 0, 98.8% 0, 98.8% 48.5%, 73.4% 100%, 0% 100%);
     background-color: #000a11;
     /* padding: 1vh 3vh 1vh 1vh; */
-    padding: 0.5vw 2vw 0.5vw 0.5vw;
+    padding: 0.5vw 2vw 0.5vw 1vw;
     margin-left: -0.04vw;
     cursor: pointer;
     transition: 0.2s;
@@ -45,9 +45,9 @@
 </style>
 <div class="navbar">
   <div class="nav-big">
-    <a class="nav-smol <%= active == 1 ? 'active' : '' %>" href="/">/DASHBOARD</a>
+    <a class="nav-smol <%= active == 1 ? 'active' : '' %>" href="/">&lt; GO_BACK</a>
   </div>
-  <div class="nav-big">
+  <!-- <div class="nav-big">
     <a class="nav-smol <%= active == 2 ? 'active' : '' %>" href="/microbots">/MICROBOTS</a>
   </div>
   <div class="nav-big">
@@ -55,5 +55,5 @@
   </div>
   <div class="nav-big">
     <a class="nav-smol <%= active == 4 ? 'active' : '' %>" href="/journal">/JOURNAL</a>
-  </div>
+  </div> -->
 </div>
