@@ -5,51 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Microbots</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&display=swap");
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        width: 100vw;
-        height: 100vh;
-        font-family: "Geist Mono", monospace;
-        color: white;
-        overflow: hidden;
-        background: linear-gradient(#060606, #131313);
-        display: flex;
-        flex-direction: column;
-      }
-      .navbar {
-        margin: 1vw 0 0 1vw;
-        display: flex;
-        align-items: center;
-        position: relative;
-        z-index: 15;
-      }
-      .nav {
-        border: 1px solid #6c6c6c;
-        border-radius: 100vw;
-        padding: 0.5vw 1vw;
-        text-decoration: none;
-        color: white;
-        font-size: 1vw;
-        background: linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.22) 0%,
-          rgba(76, 76, 76, 0.22) 100%
-        );
-        backdrop-filter: blur(5.45px);
-        transition: 0.2s;
-      }
-      .nav:hover {
-        border: 1px solid red;
-      }
-      .line {
-        height: 0.1vw;
-        width: 1.5vw;
-        background: #6c6c6c;
-      }
       .main {
         display: flex;
         flex: 1;
@@ -61,7 +16,7 @@
         margin-bottom: 1.5vw;
       }
       .shapes-text {
-        width: 20vw;
+        height: 4.6vw;
       }
       .left-inner {
         width: 18vw;
@@ -88,20 +43,30 @@
       .middle {
         flex: 1;
         margin: 1.5vw 2vw 1.5vw 0vw;
-        border-radius: 2vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .japanese {
+        width: 40vw;
+      }
+
+      .right {
+        margin-top: 1.5vw;
+        margin-right: 2vw;
+        position: relative;
+        width: 20vw;
+      }
+      .stats-text {
+        height: 4.6vw;
+        position: absolute;
+        right: 0;
+        top: 0;
       }
     </style>
   </head>
   <body>
-    <div class="navbar">
-      <a class="nav" href="#" style="border: 1px solid red">/DASHBOARD</a>
-      <div class="line"></div>
-      <a class="nav" href="#">/MICROBOTS</a>
-      <div class="line"></div>
-      <a class="nav" href="#">/CREATURES</a>
-      <div class="line"></div>
-      <a class="nav" href="#">/JOURNAL</a>
-    </div>
+    <%- include('./partials/navbar-2', {active: 2}) %>
     <div class="main">
       <div class="left">
         <img src="./elements/shapes-text.png" class="shapes-text" />
@@ -150,7 +115,12 @@
       </div>
       <div class="middle">
         <p style="margin: 0px; margin-bottom: 0.5vw; text-align: center; font-size: 1.1vw;">control</p>
-        <p style="margin: 0px; margin-bottom: 0.5vw; text-align: center; font-size: 1.1vw;">[MICROBOTS]</p>
+        <p style="margin: 0px; margin-bottom: 0.5vw; text-align: center; font-size: 1.1vw; color: red;">[MICROBOTS]</p>
+        <img src="./elements/japanese-circle-shit.png" class="japanese">
+        <img src="./elements/microbot-filler.png" class="microbot">
+      </div>
+      <div class="right">
+        <img src="./elements/statistics-text.png" class="stats-text">
       </div>
     </div>
   </body>

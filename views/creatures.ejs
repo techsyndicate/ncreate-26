@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creatures</title>
+  <style>
+    .main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      justify-content: flex-end;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding-bottom: 5vw;
+    }
+    .creatures {
+      display: flex;
+      gap: 4vw;
+      align-items: center;
+    }
+    .circle-inactive {
+      width: 12vw;
+      height: 12vw;
+      border: 1px solid #636363;
+      border-radius: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .circle-inactive:hover {
+      transform: scale(1.06);
+    }
+
+    .circle-active {
+      width: 14vw;
+      height: 14vw;
+      border: 1px solid red;
+      border-radius: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .circle-active:hover {
+      transform: scale(1.06);
+    }
+
+    .circle-inactive img {
+      height: 8vw;
+    }
+    .circle-active img {
+      height: 10vw;
+    }
+
+    .tobu-text {
+      margin: 3vw 0;
+      height: 5vw;
+    }
+    .actions {
+      display: flex;
+      gap: 2vw;
+      font-size: 1.1vw;
+    }
+    .actions p {
+      margin: 0px;
+    }
+    .action {
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action:hover {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <%- include('./partials/navbar-2', {active: 3}) %>
+  <div class="main">
+    <div class="creatures">
+      <div class="circle-inactive">
+        <img src="./elements/creature-1.png">
+      </div>
+      <div class="circle-active">
+        <img src="./elements/creature-2.png">
+      </div>
+      <div class="circle-inactive">
+        <img src="./elements/creature-3.png">
+      </div>
+    </div>
+    <img src="./elements/tobu-text.png" class="tobu-text">
+    <div class="actions">
+      <p class="action">EAT</p>
+      <p>/</p>
+      <p class="action">ENRAGE</p>
+      <p>/</p>
+      <p class="action">PET</p>
+    </div>
+  </div>
+</body>
+</html>

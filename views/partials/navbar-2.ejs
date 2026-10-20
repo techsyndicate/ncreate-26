@@ -1,0 +1,54 @@
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&display=swap");
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Geist Mono", monospace;
+  color: white;
+  overflow: hidden;
+  background: linear-gradient(#060606, #131313);
+}
+.navbar {
+  margin: 1vw 0 0 1vw;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 15;
+}
+.nav {
+  border: 1px solid #6c6c6c;
+  border-radius: 100vw;
+  padding: 0.5vw 1vw;
+  text-decoration: none;
+  color: white;
+  font-size: 1vw;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.22) 0%,
+    rgba(76, 76, 76, 0.22) 100%
+  );
+  backdrop-filter: blur(5.45px);
+  transition: 0.2s;
+}
+.nav:hover {
+  border: 1px solid red;
+}
+.line {
+  height: 0.1vw;
+  width: 1.5vw;
+  background: #6c6c6c;
+}
+</style>
+<div class="navbar">
+  <a class="nav" href="/" style="<%= active == 1 ? 'border: 1px solid red' : '' %>">/DASHBOARD</a>
+  <div class="line"></div>
+  <a class="nav" href="/microbots" style="<%= active == 2 ? 'border: 1px solid red' : '' %>">/MICROBOTS</a>
+  <div class="line"></div>
+  <a class="nav" href="/creatures" style="<%= active == 3 ? 'border: 1px solid red' : '' %>">/CREATURES</a>
+  <div class="line"></div>
+  <a class="nav" href="/journal" style="<%= active == 4 ? 'border: 1px solid red' : '' %>">/JOURNAL</a>
+</div>

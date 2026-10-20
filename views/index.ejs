@@ -5,15 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Choose Profile</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&display=swap");
-      body {
-        margin: 0;
-        width: 100vw;
-        height: 100vh;
-        font-family: "Geist Mono", monospace;
-        color: white;
-        overflow: hidden;
-      }
       .bg {
         position: absolute;
         top: 0;
@@ -23,36 +14,6 @@
         object-fit: cover;
         object-position: top center;
         z-index: -1;
-      }
-      .navbar {
-        margin: 1vw 0 0 1vw;
-        display: flex;
-        align-items: center;
-        position: relative;
-        z-index: 15;
-      }
-      .nav {
-        border: 1px solid #6c6c6c;
-        border-radius: 100vw;
-        padding: 0.5vw 1vw;
-        text-decoration: none;
-        color: white;
-        font-size: 1vw;
-        background: linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.22) 0%,
-          rgba(76, 76, 76, 0.22) 100%
-        );
-        backdrop-filter: blur(5.45px);
-        transition: 0.2s;
-      }
-      .nav:hover {
-        border: 1px solid red;
-      }
-      .line {
-        height: 0.1vw;
-        width: 1.5vw;
-        background: #6c6c6c;
       }
       .hiro {
         position: fixed;
@@ -162,16 +123,8 @@
   </head>
   <body>
     <img src="./elements/fransokyo-bg.png" class="bg" />
-    <div class="navbar">
-      <a class="nav" href="#" style="border: 1px solid red">/DASHBOARD</a>
-      <div class="line"></div>
-      <a class="nav" href="#">/MICROBOTS</a>
-      <div class="line"></div>
-      <a class="nav" href="#">/CREATURES</a>
-      <div class="line"></div>
-      <a class="nav" href="#">/JOURNAL</a>
-    </div>
-    <div class="hiro">
+    <%- include("./partials/navbar-2", { active: 1 }) %>
+    <div class="hiro" onclick="window.location.href = '/hiro'">
       <img src="./elements/hiro-home.png" class="hiro-main" />
       <img src="./elements/hiro-home-border.png" class="hiro-border" />
       <img src="./elements/hiro-banner.png" class="hiro-banner" />
