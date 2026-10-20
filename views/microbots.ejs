@@ -14,6 +14,8 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 1.5vw;
+        width: 25vw;
+        align-items: flex-start;
       }
       .shapes-text {
         height: 4.6vw;
@@ -48,20 +50,41 @@
         align-items: center;
       }
       .japanese {
-        width: 40vw;
+        height: 35vw;
+        margin-top: 2vw;
       }
 
       .right {
         margin-top: 1.5vw;
         margin-right: 2vw;
         position: relative;
-        width: 20vw;
+        width: 25vw;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-around;
+        margin-bottom: 2vw;
       }
       .stats-text {
         height: 4.6vw;
         position: absolute;
         right: 0;
         top: 0;
+      }
+      .stat-number {
+        font-size: 3vw;
+        margin: 0;
+        margin-bottom: 0.5vw;
+      }
+      .stat-desc {
+        font-size: 1vw;
+        margin: 0;
+        color: red;
+      }
+      .stat-line {
+        height: 0.1vw;
+        width: 25vw;
+        background-color: red;
       }
     </style>
   </head>
@@ -114,13 +137,45 @@
         </div>
       </div>
       <div class="middle">
-        <p style="margin: 0px; margin-bottom: 0.5vw; text-align: center; font-size: 1.1vw;">control</p>
-        <p style="margin: 0px; margin-bottom: 0.5vw; text-align: center; font-size: 1.1vw; color: red;">[MICROBOTS]</p>
-        <img src="./elements/japanese-circle-shit.png" class="japanese">
-        <img src="./elements/microbot-filler.png" class="microbot">
+        <p
+          style="
+            margin: 0px;
+            margin-bottom: 0.5vw;
+            text-align: center;
+            font-size: 1.1vw;
+          "
+        >
+          control
+        </p>
+        <p
+          style="
+            margin: 0px;
+            margin-bottom: 0.5vw;
+            text-align: center;
+            font-size: 1.1vw;
+            color: red;
+          "
+        >
+          [MICROBOTS]
+        </p>
+        <img src="./elements/microbot-and-japanese.png" class="japanese" />
       </div>
       <div class="right">
-        <img src="./elements/statistics-text.png" class="stats-text">
+        <img src="./elements/statistics-text.png" class="stats-text" />
+        <div style="text-align: right;">
+          <p class="stat-number" style="margin-top: 5vw">~1.6 MILLION</p>
+          <p class="stat-desc">TOTAL NUMBER OF MICROBOTS</p>
+        </div>
+        <div class="stat-line"></div>
+        <div style="text-align: right;">
+          <p class="stat-number">37 PERCENT</p>
+          <p class="stat-desc">% OF WORKING MICROBOTS</p>
+        </div style="text-align: right;">
+        <div class="stat-line"></div>
+        <div style="text-align: right;">
+          <p class="stat-number">63 PERCENT</p>
+          <p class="stat-desc">% OF BROKEN MICROBOTS</p>
+        </div>
       </div>
     </div>
   </body>
