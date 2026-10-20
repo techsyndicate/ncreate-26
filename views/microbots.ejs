@@ -36,6 +36,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: 0.2s;
+        cursor: pointer;
+      }
+      .circle:hover {
+        transform: scale(1.06);
       }
       .icon {
         height: 3.25vw;
@@ -122,7 +127,14 @@
               <img src="./icons/cylinder.png" class="icon" />
             </div>
           </div>
-          <div style="border: 1px solid red; flex: 1; border-radius: 2vw">
+          <div
+            style="
+              border: 1px solid red;
+              flex: 1;
+              border-radius: 2vw;
+              cursor: crosshair;
+            "
+          >
             <p
               style="
                 text-align: center;
@@ -162,17 +174,17 @@
       </div>
       <div class="right">
         <img src="./elements/statistics-text.png" class="stats-text" />
-        <div style="text-align: right;">
+        <div style="text-align: right">
           <p class="stat-number" style="margin-top: 5vw">~1.6 MILLION</p>
           <p class="stat-desc">TOTAL NUMBER OF MICROBOTS</p>
         </div>
         <div class="stat-line"></div>
-        <div style="text-align: right;">
+        <div style="text-align: right">
           <p class="stat-number">37 PERCENT</p>
           <p class="stat-desc">% OF WORKING MICROBOTS</p>
-        </div style="text-align: right;">
+        </div>
         <div class="stat-line"></div>
-        <div style="text-align: right;">
+        <div style="text-align: right">
           <p class="stat-number">63 PERCENT</p>
           <p class="stat-desc">% OF BROKEN MICROBOTS</p>
         </div>
