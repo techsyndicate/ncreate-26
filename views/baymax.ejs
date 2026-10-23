@@ -200,23 +200,36 @@
         }
       }
       @keyframes uth {
-        0% {height: 0vw;}
+        0% {
+          height: 0vw;
+        }
       }
       @keyframes fadeIn {
-        0% {opacity: 0;}
-        100% {opacity: 1;}
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
       }
       @keyframes fadeInOut {
-        0% {opacity: 0;}
-        75% {opacity: 1;}
-        100% {opacity: 0;}
+        0% {
+          opacity: 0;
+        }
+        75% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
       }
-
     </style>
   </head>
   <body>
     <div class="pre-dabba">Hi, I'm Baymax.</div>
-    <div class="pre-dabba" style="animation-delay: 2s">Your personal healthcare<br>companion.</div>
+    <div class="pre-dabba" style="animation-delay: 2s">
+      Your personal healthcare<br />companion.
+    </div>
     <div class="dabba">
       <%- include('./partials/navbar.ejs', {active: 1}) %>
       <img src="./elements/circle.png" class="circle" />
