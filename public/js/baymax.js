@@ -56,10 +56,37 @@ loader.load("./3d/baymax.glb", (result) => {
   }
 });
 
+function playAnimation(name, gayab) {
+  if (!mixer || !gltf) return;
+  const clip = THREE.AnimationClip.findByName(gltf.animations, name);
+  mouseLocked = true;
+  if (gayab) {
+    document.getElementById("muth").style.opacity = "0";
+  }
+  setTimeout(() => {
+    mouseReset = true;
+    mixer.stopAllAction();
+    mixer.addEventListener("finished", (e) => {
+      if (e.action == action) {
+        console.log("ho gayi");
+        mouseLocked = false;
+        mouseReset = false;
+        if (muth) document.getElementById("muth").style.opacity = "1";
+      }
+    });
+    const action = mixer.clipAction(clip);
+    action.reset();
+    action.setLoop(THREE.LoopOnce, 1);
+    action.clampWhenFinished = true;
+    action.play();
+  }, 350);
+}
+window.playAnimation = playAnimation;
+
 document.addEventListener("keydown", (event) => {
   if (event.key !== "Enter" || event.repeat) return;
   if (!mixer || !gltf) return;
-  const clip = THREE.AnimationClip.findByName(gltf.animations, "Punch");
+  const clip = THREE.AnimationClip.findByName(gltf.animations, "FistBump");
   mouseLocked = true;
   setTimeout(() => {
     mouseReset = true;

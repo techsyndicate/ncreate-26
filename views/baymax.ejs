@@ -36,8 +36,9 @@
         transform: translate(-50%, -48%);
         width: 100vh;
         height: 100vh;
-        /* background: red; */
+        z-index: 3;
       }
+
       .codeDabbaContainer {
         display: flex;
         flex-direction: row;
@@ -113,6 +114,59 @@
         animation-duration: 0.9s;
         animation-fill-mode: forwards;
       }
+      .muth-circle {
+        position: absolute;
+        z-index: 2;
+        height: 21.5vh;
+        width: 21.5vh;
+        top: 68.5vh;
+        left: 50%;
+        transform: translate(calc(-50% - 21.5vh), -50%);
+        border-radius: 100vw;
+        background: #000a11;
+      }
+      .muth-circle-border {
+        background: transparent;
+        border: 0.1vw solid #a1c7e7;
+        z-index: 4;
+      }
+      .muth-side-circle {
+        height: 2vh;
+        width: 2vh;
+        transform: translate(calc(-50% - 33.2vh), -50%);
+        background: #a1c7e7;
+      }
+      .muth-text {
+        padding: 1.3vh 2vh;
+        background: #a1c7e7;
+        color: black;
+        height: auto;
+        width: auto;
+        transform: translate(calc(-50% - 41.2vh), -50%);
+        font-size: 1.9vh;
+        cursor: pointer;
+        transition: 0.2s;
+        z-index: 20;
+      }
+      .muth-text:hover {
+        transform: translate(calc(-50% - 41.2vh), -50%) scale(1.05);
+      }
+      .anim-button {
+        width: 7vw;
+        height: 7vw;
+        background: #a1c7e7;
+        border-radius: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 1.1vw;
+        color: black;
+      }
+      .anim-button:hover {
+        transform: scale(1.05);
+      }
 
       @keyframes ghoomar {
         0% {
@@ -135,6 +189,7 @@
       <img src="./elements/circle.png" class="circle" />
       <img src="./elements/baymax-text.png" class="baymax-text" />
       <canvas id="baymax"></canvas>
+
       <div class="codeDabbaContainer">
         <div class="codeDabba" style="width: 13vw">
           <div class="code">
@@ -199,10 +254,16 @@ const createTicketId = () => {
               <div class="grid-box"></div>
             </div>
             <div class="graph-bars">
-              <div class="graph-bar" style="height: 1.4vw; border-left: none"></div>
+              <div
+                class="graph-bar"
+                style="height: 1.4vw; border-left: none"
+              ></div>
               <div class="graph-bar" style="height: 6.4vw"></div>
               <div class="graph-bar" style="height: 4.9vw"></div>
-              <div class="graph-bar" style="height: 3.5vw; border-right: none"></div>
+              <div
+                class="graph-bar"
+                style="height: 3.5vw; border-right: none"
+              ></div>
             </div>
           </div>
           <p>Battery</p>
@@ -234,14 +295,51 @@ const createTicketId = () => {
               <div class="grid-box"></div>
             </div>
             <div class="graph-bars">
-              <div class="graph-bar" style="height: 4.5vw; border-left: none"></div>
+              <div
+                class="graph-bar"
+                style="height: 4.5vw; border-left: none"
+              ></div>
               <div class="graph-bar" style="height: 2.9vw"></div>
               <div class="graph-bar" style="height: 6.4vw"></div>
-              <div class="graph-bar" style="height: 5vw; border-right: none"></div>
+              <div
+                class="graph-bar"
+                style="height: 5vw; border-right: none"
+              ></div>
             </div>
           </div>
           <p>Stamina</p>
         </div>
+      </div>
+      <div id="muth" style="transition: 0.4s">
+        <div class="muth-circle"></div>
+        <div class="muth-circle muth-circle-border"></div>
+        <div class="muth-circle muth-side-circle"></div>
+        <div
+          class="muth-circle muth-text"
+          onclick="playAnimation('FistBump', true)"
+        >
+          FIST BUMP
+        </div>
+      </div>
+
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          margin-left: 2vw;
+          padding-top: 1vw;
+        "
+      >
+        <p style="font-size: 1vw; margin: 0px">Battery:-</p>
+        <img
+          src="./icons/battery.png"
+          style="height: 1vw; margin-left: 0.5vw"
+        />
+      </div>
+
+      <div style="display: flex; gap: 1vw; margin: 2vw 0 0 3vw">
+        <div class="anim-button" onclick="playAnimation('Wave')">Wave</div>
+        <div class="anim-button" onclick="playAnimation('Punch')">Punch</div>
       </div>
     </div>
     <script type="importmap">
