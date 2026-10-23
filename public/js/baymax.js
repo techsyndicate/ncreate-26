@@ -4,6 +4,8 @@ import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
 
 const scene = new THREE.Scene();
 const canvas = document.getElementById("baymax");
+const balalala = new Audio("audio/balalala.mp3");
+const helloBaymax = new Audio("audio/hello-baymax.mp3");
 var mouseLocked = false;
 var mouseReset = false;
 
@@ -62,6 +64,14 @@ function playAnimation(name, gayab) {
   mouseLocked = true;
   if (gayab) {
     document.getElementById("muth").style.opacity = "0";
+    setTimeout(() => {
+      balalala.play();
+    }, 2500)
+  }
+  if (name == "Wave") {
+    setTimeout(() => {
+      helloBaymax.play();
+    }, 1000);
   }
   setTimeout(() => {
     mouseReset = true;

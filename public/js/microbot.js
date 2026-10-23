@@ -22,7 +22,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(canvas.clientWidth, canvas.clientHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-scene.add(new THREE.HemisphereLight(0xffffff, 0x444444, 2));
+scene.add(new THREE.AmbientLight(0xffffff, 4));
 const directionalLight = new THREE.DirectionalLight(0xffffff, 12);
 directionalLight.position.set(4, 4, 4);
 scene.add(directionalLight);
