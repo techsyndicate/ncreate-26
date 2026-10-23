@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creatures</title>
-  <style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creatures</title>
+    <!-- <style>
     .main {
       display: flex;
       flex-direction: column;
@@ -78,11 +78,148 @@
     .action:hover {
       color: red;
     }
-  </style>
-</head>
-<body>
-  <%- include('./partials/navbar-2', {active: 3}) %>
-  <div class="main">
+  </style> -->
+
+    <style>
+      body {
+        user-select: none;
+      }
+      .navbar {
+        transition: 0.3s;
+      }
+      .main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 1vw;
+      }
+      .button {
+        border: 0.1vw solid red;
+        border-radius: 100vw;
+        padding: 0.7vw 1.5vw;
+        font-size: 1.3vw;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .button:hover {
+        background: red;
+        color: black;
+      }
+      .HOSHIYAR {
+        background: rgb(160, 5, 5);
+        color: white;
+        width: 100%;
+        height: 100%;
+        border-radius: 1vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+      }
+      .HOSHIYAR h1 {
+        font-size: 3.1vw;
+        margin: 0;
+        color: rgb(220, 220, 36);
+      }
+      .HOSHIYAR p {
+        font-size: 1.5vw;
+        width: 60%;
+        margin: 2vw 0 0 0;
+      }
+      .gamebox {
+        /* border: 0.2vw solid rgb(160, 5, 5); */
+        background: rgb(160, 5, 5);
+        border-radius: 1vw;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+      .nextBtn {
+        display: flex;
+        gap: 0.8vw;
+        font-size: 1.4vw;
+        margin-top: 2vw;
+        color: rgb(220, 220, 36);
+        opacity: 0;
+        align-items: center;
+        cursor: pointer;
+      }
+      .triangle {
+        width: 0.9vw;
+        height: 0.7vw;
+        background: rgb(220, 202, 36);
+        clip-path: polygon(0 0, 100% 50%, 0 100%);
+      }
+      .nextBtn * {
+        animation-name: blink;
+        animation-duration: 0.4s;
+        animation-iteration-count: infinite;
+      }
+      .microbot {
+        height: 7vw;
+      }
+      .microbot-container {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 50;
+      }
+      .arrow {
+        position: absolute;
+        bottom: 3.5vw;
+        background: black;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0.2vw;
+        height: 10vw;
+        z-index: 40;
+        transform-origin: bottom center;
+      }
+      .arrow::after {
+        content: "";
+        position: absolute;
+        top: -1vw;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1vw;
+        height: 1vw;
+        background: black;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      }
+      .score {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: rgba(50, 50, 50, 0.8);
+        padding: 1vw 1.5vw;
+        z-index: 1000;
+        font-size: 1.2vw;
+      }
+
+      @keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <%- include("./partials/navbar-2.ejs", { active: 3 }) %>
+    <!-- <div class="main">
     <div class="creatures">
       <div class="circle-inactive">
         <img src="./elements/creature-1.png">
@@ -102,6 +239,240 @@
       <p>/</p>
       <p class="action">PET</p>
     </div>
-  </div>
-</body>
+  </div> -->
+
+    <div class="main" style="z-index: 300" id="startMenu">
+      <div class="button" onclick="startGameIntro()" id="start">Start</div>
+    </div>
+    <div
+      class="main"
+      style="opacity: 0; transition: 0.3s; z-index: 200"
+      id="intro"
+    >
+      <div class="HOSHIYAR">
+        <h1>MASSIVE PROBLEM!!!</h1>
+        <p>_</p>
+        <div class="nextBtn" onclick="typeWriter(0)">
+          <div>Next</div>
+          <div style="display: flex; gap: 0.2vw">
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main" style="opacity: 0; transition: 0.3s; z-index: 100;" id="game">
+      <div class="gamebox">
+        <div class="score">Score: <span id="score">0</span></div>
+        <div class="microbot-container">
+          <img src="game/microbot.png" class="microbot" />
+        </div>
+        <div class="arrow" id="arrow"></div>
+      </div>
+    </div>
+    <div
+      class="main"
+      style="opacity: 0; transition: 0.3s; z-index: 1"
+      id="outro"
+    >
+      <div class="HOSHIYAR">
+        <h1>You Survived The Tobus!</h1>
+        <p>You fought off <span id="final-score">0</span> Tobus!!</p>
+        <div class="nextBtn" onclick="window.location.href = '/'" style="opacity: 1">
+          <div>Return To Home</div>
+          <div style="display: flex; gap: 0.2vw">
+            <div class="triangle"></div>
+            <div class="triangle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var idx = 0;
+      const introAudio = new Audio("audio/game-audio.mp3");
+      const gameAudio = new Audio("audio/game-audio-2.mp3");
+      const eatAudio = new Audio("audio/eat.mp3");
+      var gameStarted = false;
+      var hasMicrobot = true;
+      var gameSpeed = 0.3;
+      var score = 0;
+      var creaturesDone = 0;
+
+      const texts = [
+        "THIRTY different Tobus have put the dots together and realized that you're feeding on their friends!!",
+        "They are outraged and will do anything to stop you from eating them. They're even ready to attack you!!",
+        "Your only chance of survival is to use your microbots to attack the hostile Tobus and defend yourself. Be careful, these little creatures may seem cute but are also lethal!!",
+      ];
+      function startGameIntro() {
+        document.getElementById("navbar").style.transform = "translateY(-6vw)";
+        document.getElementById("start").style.opacity = "0";
+        setTimeout(() => {
+          document.getElementById("startMenu").style.display = "none";
+          document.getElementById("intro").style.opacity = "1";
+          introAudio.play();
+          setTimeout(() => {
+            typeWriter(0);
+          }, 300);
+        }, 300);
+      }
+      function typeWriter(i) {
+        if (idx >= texts.length) {
+          startGame();
+          return;
+        }
+        if (i == 0) {
+          document.querySelector(".nextBtn").style.opacity = "0";
+        }
+        var text = texts[idx];
+        if (i < text.length) {
+          document.querySelector(".HOSHIYAR p").innerHTML = text.substring(
+            0,
+            i + 1
+          );
+          setTimeout(function () {
+            typeWriter(i + 1);
+          }, 30);
+        } else {
+          document.querySelector(".nextBtn").style.opacity = "1";
+          idx += 1;
+        }
+      }
+      function startGame() {
+        introAudio.pause();
+        document.getElementById("intro").style.opacity = "0";
+        setTimeout(() => {
+          document.getElementById("intro").style.display = "none";
+          document.getElementById("game").style.opacity = "1";
+          gameAudio.play();
+          gameLoop();
+        }, 300);
+      }
+
+      function moveMicrobot() {
+        hasMicrobot = false;
+        const arrow = document.getElementById("arrow");
+        const microbot = document.querySelector(".microbot-container");
+        const angle = parseFloat(
+          arrow.style.transform.match(/rotate\((-?\d+\.?\d*)deg\)/)[1]
+        );
+        const radians = (angle * Math.PI) / 180;
+        const speed = 28;
+        let x = 0;
+        let y = 0;
+        function move() {
+          x += speed * Math.sin(radians);
+          y -= speed * Math.cos(radians);
+          microbot.style.transform = `translate(${x}px, ${y}px)`;
+          document.querySelector(
+            ".microbot"
+          ).style.transform = `rotate(${x}deg)`;
+          const rect = microbot.getBoundingClientRect();
+          if (
+            rect.right > 0 &&
+            rect.left < window.innerWidth &&
+            rect.bottom > 0 &&
+            rect.top < window.innerHeight &&
+            !isMicrobotTouchingCreature()
+          ) {
+            requestAnimationFrame(move);
+          } else {
+            microbot.remove();
+            const newMicrobot = document.createElement("div");
+            newMicrobot.className = "microbot-container";
+            newMicrobot.innerHTML =
+              '<img src="game/microbot.png" class="microbot" />';
+            document.querySelector(".gamebox").appendChild(newMicrobot);
+            hasMicrobot = true;
+            return;
+          }
+        }
+        move();
+      }
+
+      function makeCreature() {
+        gameSpeed += 0.015;
+        const creature = document.createElement("img");
+        creature.src = `elements/creature-${
+          Math.floor(Math.random() * 3) + 1
+        }.png`;
+        creature.style.position = "absolute";
+        creature.style.top = "-10vw";
+        const randomX = Math.random() * 93;
+        creature.style.left = `${randomX}vw`;
+        creature.style.width = "5vw";
+        creature.className = "creature";
+        document.querySelector(".gamebox").appendChild(creature);
+        let y = -10;
+        function fall() {
+          y += gameSpeed;
+          creature.style.top = `${y}vw`;
+          if (y < window.innerHeight / 10) {
+            requestAnimationFrame(fall);
+          } else {
+            creature.remove();
+            return;
+          }
+        }
+        fall();
+      }
+
+      function isMicrobotTouchingCreature() {
+        const microbot = document.querySelector(".microbot-container");
+        if (!microbot) return false;
+        const botRect = microbot.getBoundingClientRect();
+        const creatures = document.querySelectorAll(".creature");
+        return Array.from(creatures).some((creature) => {
+          const rect = creature.getBoundingClientRect();
+          const isTouching =
+            botRect.left < rect.right &&
+            botRect.right > rect.left &&
+            botRect.top < rect.bottom &&
+            botRect.bottom > rect.top;
+          if (isTouching) {
+            creature.remove();
+            eatAudio.play();
+            setTimeout(() => {
+              eatAudio.currentTime = 0;
+              score += 1;
+              document.getElementById("score").innerText = score;
+            }, 100);
+            return true;
+          }
+        });
+      }
+
+      function gameLoop() {
+        gameStarted = true;
+        if (creaturesDone >= 30) {
+          gameStarted = false;
+          document.getElementById("game").style.opacity = "0";
+          document.getElementById("final-score").innerText = score;
+          setTimeout(() => {
+            document.getElementById("game").style.display = "none";
+            document.getElementById("outro").style.opacity = "1";
+            gameAudio.pause();
+            introAudio.currentTime = 0;
+            introAudio.play();
+          }, 300);
+          return;
+        }
+        makeCreature();
+        creaturesDone += 1;
+        setTimeout(gameLoop, 1000);
+      }
+
+      window.addEventListener("click", () => {
+        if (!gameStarted || !hasMicrobot) return;
+        moveMicrobot();
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (!gameStarted) return;
+        const arrow = document.getElementById("arrow");
+        const x = e.clientX;
+        const norm = 1 - 2 * (x / window.innerWidth);
+        arrow.style.transform = `translateX(-50%) rotate(${-norm * 80}deg)`;
+      });
+    </script>
+  </body>
 </html>
