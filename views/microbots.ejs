@@ -149,6 +149,7 @@
               border-radius: 2vw;
               cursor: crosshair;
             "
+            id="drawable"
           >
             <p
               style="
@@ -215,6 +216,53 @@
           allCircles[i].classList.add("selected");
         });
       }
+
+      const drawable = document.getElementById("drawable");
+      const resolution = 20;
+
+      const grid = document.createElement("div");
+      grid.style.display = "grid";
+      grid.style.gridTemplateColumns = `repeat(${resolution}, 1fr)`;
+      grid.style.width = "100%";
+      grid.style.marginTop = "1vw";
+
+      drawable.appendChild(grid);
+
+      function createPixels() {
+        const heading = drawable.querySelector("p");
+        const drawableHeight = drawable.clientHeight;
+        const headingHeight = heading ? heading.offsetHeight : 0;
+        const marginTop = parseFloat(getComputedStyle(grid).marginTop) || 0;
+        const availableHeight =
+          drawableHeight -
+          headingHeight -
+          marginTop -
+          window.innerWidth * 0.02;
+
+        if (availableHeight <= 0) return;
+
+        grid.style.height = `${availableHeight}px`;
+        grid.style.gridAutoRows = `${availableHeight / resolution}px`;
+        grid.innerHTML = "";
+
+        for (let i = 0; i < resolution * resolution; i++) {
+          const pixel = document.createElement("div");
+          pixel.style.background = "transparent";
+          pixel.classList.add("pixel");
+          pixel.addEventListener("mousedown", () => {
+            pixel.style.background = "red";
+          });
+          pixel.addEventListener("mouseenter", (event) => {
+            if (event.buttons === 1) {
+              pixel.style.background = "red";
+            }
+          });
+          grid.appendChild(pixel);
+        }
+      }
+
+      requestAnimationFrame(createPixels);
+      window.addEventListener("resize", createPixels);
     </script>
     <script type="importmap">
       {
