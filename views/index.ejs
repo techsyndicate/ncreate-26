@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Choose Profile</title>
     <style>
+      * {transition: 0.3s;}
       .bg {
         position: absolute;
         top: 0;
@@ -122,18 +123,42 @@
     </style>
   </head>
   <body>
-    <img src="./elements/fransokyo-bg.png" class="bg" />
+    <img src="./elements/fransokyo-bg.png" class="bg" id="bg" />
     <%- include("./partials/navbar-2", { active: 1 }) %>
-    <div class="hiro" onclick="window.location.href = '/hiro'">
+    <div class="hiro" onclick="redirectTo('hiro')" id="hiro">
       <img src="./elements/hiro-home.png" class="hiro-main" />
       <img src="./elements/hiro-home-border.png" class="hiro-border" />
       <img src="./elements/hiro-banner.png" class="hiro-banner" />
     </div>
-    <div class="baymax" onclick="window.location.href = '/baymax'">
+    <div class="baymax" onclick="redirectTo('baymax')" id="baymax">
       <img src="./elements/baymax-home.png" class="baymax-main" />
       <img src="./elements/baymax-home-border.png" class="baymax-border" />
       <img src="./elements/baymax-banner.png" class="baymax-banner" />
     </div>
-    <img src="./elements/select-profile.png" class="profile">
+    <img src="./elements/select-profile.png" class="profile" id="profile">
+
+    <script>
+      function redirectTo(name) {
+        document.getElementById("navbar").style.transform = "translateY(-6vw)";
+        document.getElementById("bg").style.opacity = "0";
+        document.getElementById("profile").style.opacity = "0";
+        if (name == "baymax") {
+          document.getElementById("hiro").style.opacity = "0"
+          setTimeout(() => {
+            document.getElementById("baymax").style.transition = "0.7s";
+            document.getElementById("baymax").style.transform = "translateY(150vh)";
+            setTimeout(() => {window.location.href = '/baymax'}, 700)
+          }, 400)
+        }
+        if (name == "hiro") {
+          document.getElementById("baymax").style.opacity = "0"
+          setTimeout(() => {
+            document.getElementById("hiro").style.transition = "0.7s";
+            document.getElementById("hiro").style.transform = "translateY(150vh)";
+            setTimeout(() => {window.location.href = '/hiro'}, 700)
+          }, 400)
+        }
+      }
+    </script>
   </body>
 </html>

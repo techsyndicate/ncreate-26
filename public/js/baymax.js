@@ -38,7 +38,7 @@ let headBone = null;
 let initialRotation = null;
 
 loader.setMeshoptDecoder(MeshoptDecoder);
-loader.load("./3d/baymax.glb", (result) => {
+loader.load("./3d/baymax_2.glb", (result) => {
   gltf = result;
   scene.add(gltf.scene);
 
