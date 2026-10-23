@@ -7,7 +7,7 @@
     <style>
       .dabba {
         flex: 1;
-        border: 0.1vw solid #a1c7e7;
+        border: 0.2vh solid #a1c7e7;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -19,27 +19,239 @@
         left: 50%;
         transform: translate(-50%, -53%);
         height: 70vh;
+        animation-name: ghoomar;
+        animation-duration: 15s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
       }
       .baymax-text {
         width: 20vw;
         margin-top: 2.5vw;
         margin-left: 2vw;
       }
-      .baymax-filler {
-        height: 69vh;
+      #baymax {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -40%);
+        transform: translate(-50%, -48%);
+        width: 100vh;
+        height: 100vh;
+        /* background: red; */
+      }
+      .codeDabbaContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .codeDabba {
+        border-left: 0.1vw solid #a1c7e7;
+        border-bottom: 0.1vw solid #a1c7e7;
+      }
+      .codeDabbaHeading {
+        background: #a1c7e7;
+        padding: 0.6vw;
+        color: black;
+        font-size: 0.85vw;
+      }
+      .code {
+        color: rgba(255, 255, 255, 0.6);
+        padding: 0.8vw;
+        font-size: 0.65vw;
+      }
+      .code pre {
+        margin: 0px;
+        overflow-wrap: break-word;
+        white-space: break-spaces;
+      }
+
+      .graphs {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding-bottom: 3vw;
+        padding-right: 4vw;
+      }
+      .graph {
+        margin-top: 1.5vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .graph p {
+        margin: 0.4vw 0 0;
+        font-size: 0.7vw;
+      }
+      .graph-box {
+        border: 0.2vw solid #a1c7e7;
+        position: relative;
+      }
+      .grid-row {
+        display: flex;
+      }
+      .grid-box {
+        border: 0.1vw solid #a1c7e7;
+        width: 2.2vw;
+        height: 2vw;
+      }
+      .graph-bars {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        align-items: flex-end;
+      }
+      .graph-bar {
+        background: #66b9ff;
+        border-top: 0.2vw solid #a1c7e7;
+        border-left: 0.1vw solid #a1c7e7;
+        border-right: 0.1vw solid #a1c7e7;
+        width: 2.2vw;
+        animation-name: uth;
+        animation-duration: 0.9s;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes ghoomar {
+        0% {
+          transform: translate(-50%, -53%) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -53%) rotate(360deg);
+        }
+      }
+      @keyframes uth {
+        0% {
+          height: 0vw;
+        }
       }
     </style>
   </head>
   <body>
     <div class="dabba">
       <%- include('./partials/navbar.ejs', {active: 1}) %>
-      <img src="./elements/circle.png" class="circle">
-      <img src="./elements/baymax-text.png" class="baymax-text">
-      <img src="./elements/baymax-filler.png" class="baymax-filler">
+      <img src="./elements/circle.png" class="circle" />
+      <img src="./elements/baymax-text.png" class="baymax-text" />
+      <canvas id="baymax"></canvas>
+      <div class="codeDabbaContainer">
+        <div class="codeDabba" style="width: 13vw">
+          <div class="code">
+            <pre>
+return NextResponse.json({
+    message: "Hi",
+    success: true,
+    name: "Baymax",
+    age: Infinity,
+    gender: "/"
+  });</pre
+            >
+          </div>
+        </div>
+        <div class="codeDabba" style="width: 20vw">
+          <div class="codeDabbaHeading">helloWorld.tsx</div>
+          <div class="code">
+            <pre>
+import { connect } from "@/dbConfig/dbConfig";
+import User from "@/models/userModel";
+import { NextRequest, NextResponse } from "next/server";
+import Ticket from "@/models/ticketModel";
+
+connect();
+
+const createTicketId = () => {
+    const random = Math.floor(Math.random() * Math.pow(10, 14)).toString();
+    const arr = random.split("");
+    return "#" + arr.join("");
+};
+              </pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="graphs">
+        <div class="graph">
+          <div class="graph-box">
+            <div class="grid-row">
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+            </div>
+            <div class="graph-bars">
+              <div class="graph-bar" style="height: 1.4vw; border-left: none"></div>
+              <div class="graph-bar" style="height: 6.4vw"></div>
+              <div class="graph-bar" style="height: 4.9vw"></div>
+              <div class="graph-bar" style="height: 3.5vw; border-right: none"></div>
+            </div>
+          </div>
+          <p>Battery</p>
+        </div>
+        <div class="graph">
+          <div class="graph-box">
+            <div class="grid-row">
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+              <div class="grid-box"></div>
+            </div>
+            <div class="graph-bars">
+              <div class="graph-bar" style="height: 4.5vw; border-left: none"></div>
+              <div class="graph-bar" style="height: 2.9vw"></div>
+              <div class="graph-bar" style="height: 6.4vw"></div>
+              <div class="graph-bar" style="height: 5vw; border-right: none"></div>
+            </div>
+          </div>
+          <p>Stamina</p>
+        </div>
+      </div>
     </div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script src="./js/baymax.js" type="module"></script>
   </body>
 </html>
