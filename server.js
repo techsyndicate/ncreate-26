@@ -31,4 +31,8 @@ app.get("/creatures", (req, res) => {
   res.render("creatures");
 })
 
+app.get("/mutiny", (req, res) => {
+  res.render("game");
+})
+
 app.listen(PORT, console.log(`Server is running on port ${PORT}`));
