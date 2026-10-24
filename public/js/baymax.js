@@ -64,14 +64,16 @@ function playAnimation(name, gayab) {
   mouseLocked = true;
   if (gayab) {
     document.getElementById("muth").style.opacity = "0";
-    setTimeout(() => {
-      balalala.play();
-    }, 2500)
   }
   if (name == "Wave") {
     setTimeout(() => {
       helloBaymax.play();
     }, 1000);
+  }
+  if (name == "FistBump") {
+    setTimeout(() => {
+      balalala.play();
+    }, 2500);
   }
   setTimeout(() => {
     mouseReset = true;
